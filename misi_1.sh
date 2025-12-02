@@ -1,34 +1,47 @@
-#!/bin/sh
-. ./config.sh
-
-ip a add 10.22.1.1/24 dev eth0
-ip a add 10.22.2.1/24 dev eth1
-ip a add 10.22.3.1/24 dev eth2
-ip link set eth0 up
-ip link set eth1 up
-ip link set eth2 up
-
-ip route add 10.22.10.0/29 via 10.22.1.2
-ip route add 10.22.20.0/27 via 10.22.1.2
-ip route add 10.22.30.0/27 via 10.22.2.2
-ip route add 10.22.40.0/26 via 10.22.2.2
-ip route add 10.22.50.0/25 via 10.22.3.2
-ip route add 10.22.60.0/24 via 10.22.3.2
-
+#vilya
+ip addr add 192.222.1.203/29 dev eth0
+ip route add default via 192.222.1.201 dev eth0
+echo "nameserver 192.168.122.1" > /etc/resolv.conf
 apt update
-apt install -y dnsmasq apache2
+apt-get install isc-dhcp-server -y
 
-echo "interface=eth0
-dhcp-range=10.22.10.10,10.22.10.14,12h
-dhcp-range=10.22.20.10,10.22.20.30,12h
-dhcp-range=10.22.30.10,10.22.30.40,12h
-dhcp-range=10.22.40.10,10.22.40.60,12h
-dhcp-range=10.22.50.10,10.22.50.120,12h
-dhcp-range=10.22.60.10,10.22.60.210,12h" > /etc/dnsmasq.conf
-systemctl restart dnsmasq
+ #AnduinBanks, Rivendell, dan Minastir
+ip addr add 192.222.1.234/30 dev eth0
+ip addr add 192.222.1.201/29 dev eth1
+ip route add default via 192.222.1.233 dev eth0
 
-echo "nameserver 10.22.1.10" > /etc/resolv.conf
+ip route add 192.222.1.232/30 via 192.222.1.233
 
-echo "Welcome to $(hostname)" > /var/www/html/index.html
-systemctl restart apache2
+ip route add 192.222.1.228/30 via 192.222.1.233
 
+ip route add 192.222.1.208/30 via 192.222.1.233
+
+ip route add 192.222.1.212/30 via 192.222.1.233
+
+ip route add 192.222.1.128/26 via 192.222.1.233
+
+ip route add 192.222.1.192/29 via 192.222.1.233
+
+ip route add 192.222.1.236/30 via 192.222.1.233
+
+ip route add 192.222.0.0/24 via 192.222.1.233
+
+ip route add 192.222.1.224/30 via 192.222.1.233
+ip route add 192.222.1.216/30 via 192.222.1.233
+
+ip route add 192.222.1.220/30 via 192.222.1.233
+ip route add 192.222.1.0/25 via 192.222.1.233
+
+echo "nameserver 192.168.122.1" > /etc/resolv.conf
+apt-get update
+apt-get install isc-dhcp-relay -y
+
+#narya
+ip addr add 192.222.1.202/29 dev eth0
+ip route add default via 192.222.1.201 dev eth0
+echo "nameserver 192.168.122.1" > /etc/resolv.conf
+
+#ironhills
+ip addr add 192.222.1.210/30 dev eth0
+ip route add default via 192.222.1.209 dev eth0
+echo "nameserver 192.168.122.1" > /etc/resolv.conf
