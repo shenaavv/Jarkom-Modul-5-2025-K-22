@@ -12,7 +12,7 @@
 ## Reporting
 
 ```bash
-Base = 10.22.0.0
+Base = 192.222
 ```
 
 ## Misi 1: Memetakan Medan Perang
