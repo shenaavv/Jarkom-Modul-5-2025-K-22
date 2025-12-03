@@ -56,6 +56,11 @@ Tabel berikut merangkum alokasi alamat IP untuk berbagai subnet, termasuk Networ
 | **A12** | Rivendell > Osgiliath | 192.222.1.232/30 | 192.222.1.233 | 192.222.1.235 | 192.222.1.233 - 192.222.1.234 | 2 | 4 | 255.255.255.252 |
 | **A13** | Minastir > Osgiliath | 192.222.1.236/30 | 192.222.1.237 | 192.222.1.239 | 192.222.1.237 - 192.222.1.238 | 2 | 4 | 255.255.255.252 |
 
+### Tree
+
+<img width="458" height="682" alt="image" src="https://github.com/user-attachments/assets/15d33dbc-fda5-4ed1-bf65-e56b0199051d" />
+
+
 ### Melakukan Konfigurasi Service
 - **Vilya** sebagai DHCP Server agar perangkat dalam Khamul, Durin, Gilgalad, Elendil, Cirdan, dan Isildur menerima IP otomatis.
     - update & download
