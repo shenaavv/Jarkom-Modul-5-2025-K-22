@@ -300,7 +300,7 @@ OPTIONS=""
 
   <img width="700" height="108" alt="image" src="https://github.com/user-attachments/assets/4e399574-4df7-4b5e-adee-168cdd79e00a" />
 
-### 5. buat hanya bisa curl iron hilss pada weekend
+### 4. buat hanya bisa curl iron hilss pada weekend
   - pada ironhills
 
     ```c
