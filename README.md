@@ -265,11 +265,15 @@ OPTIONS=""
 
 ### 1. iptables postrouting (**osgiliath**)
 
+   -  Agar seluruh jaringan internal bisa terhubung ke internet melalui Osgiliath, dibuat rule SNAT:
+
     ```c
     iptables -t nat -A POSTROUTING -o eth0 -j SNAT --to-source 192.168.122.25
     ```
 
 ### 2. tidak ada yang bisa ping vilya (**vilya**)
+
+ - Agar tidak ada perangkat yang bisa melakukan ping ke Vilya, maka ICMP Echo Request diblokir:
 
     ```c
     iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
@@ -282,6 +286,9 @@ OPTIONS=""
     ```
 
 ### 3. Membuat hanya vilya yang bisa nc narya (**narya**)
+
+- DNS Server (Narya) hanya boleh menerima koneksi UDP port 53 dari Vilya.
+  Maka selain Vilya → ditolak.
 
     ```c
     iptables -A INPUT -p udp --dport 53 -s 192.222.1.203 -j ACCEPT && iptables -A INPUT -p udp --dport 53 -j REJECT
@@ -301,7 +308,8 @@ OPTIONS=""
   <img width="700" height="108" alt="image" src="https://github.com/user-attachments/assets/4e399574-4df7-4b5e-adee-168cdd79e00a" />
 
 ### 4. buat hanya bisa curl iron hilss pada weekend
-  - pada ironhills
+
+  - Akses ke web server IronHills (port 80) hanya diperbolehkan pada Sabtu & Minggu, dan hanya dari subnet tertentu.
 
     ```c
     # 1. Izinkan Subnet Durin
